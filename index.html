@@ -97,21 +97,31 @@
             box-shadow: none;
         }
         .sponsor-track {
-            animation: sponsorScroll 28s linear infinite;
+            animation: sponsorScroll 55s linear infinite;
             width: max-content;
             box-shadow: none;
+            gap: 0;
         }
         #patrocinadores .sponsor-track img {
             width: 460px;
             height: 197px;
             object-fit: contain;
+            object-position: center;
             flex-shrink: 0;
             display: block;
             box-shadow: none !important;
             -webkit-filter: none !important;
             filter: none !important;
             opacity: 1 !important;
-            /* sem hover: evita efeito de “levantar” que parece sombra */
+            /* Puxa as marcas para perto: o PNG tem área vazia; margem negativa “fecha” o espaço visual */
+            margin-left: -2.75rem;
+            margin-right: -2.75rem;
+        }
+        @media (min-width: 768px) {
+            #patrocinadores .sponsor-track img {
+                margin-left: -4.5rem;
+                margin-right: -4.5rem;
+            }
         }
         @keyframes sponsorScroll {
             from { transform: translateX(0); }
@@ -230,7 +240,7 @@
             <h2 class="font-display text-3xl md:text-4xl text-brand-black font-bold">Patrocinadores</h2>
         </div>
         <div class="relative">
-            <div class="sponsor-track flex items-center gap-3 md:gap-4 px-2 md:px-4">
+            <div class="sponsor-track flex items-center px-0">
                 <img src="assets/patrocinadores/BT-logo-ADEMICON.png" alt="Logo ADEMICON" loading="lazy" decoding="async">
                 <img src="assets/patrocinadores/BT-logo-AGROJAX.png" alt="Logo AGROJAX" loading="lazy" decoding="async">
                 <img src="assets/patrocinadores/BT-logo-Arena%20Batel.png" alt="Logo Arena Batel" loading="lazy" decoding="async">
