@@ -93,30 +93,25 @@
             background: #fff !important;
             color: #2C4A6B !important;
         }
+        #patrocinadores {
+            box-shadow: none;
+        }
         .sponsor-track {
             animation: sponsorScroll 28s linear infinite;
             width: max-content;
+            box-shadow: none;
         }
         #patrocinadores .sponsor-track img {
-            width: 210px;
-            height: 90px;
+            width: 460px;
+            height: 197px;
             object-fit: contain;
             flex-shrink: 0;
             display: block;
+            box-shadow: none !important;
+            -webkit-filter: none !important;
             filter: none !important;
             opacity: 1 !important;
-            transition: transform 0.25s ease;
-        }
-        #patrocinadores .sponsor-track img.sponsor-logo--large {
-            transform: scale(1.22);
-            transform-origin: center;
-        }
-        #patrocinadores .sponsor-track img:hover {
-            filter: none !important;
-            transform: translateY(-2px);
-        }
-        #patrocinadores .sponsor-track img.sponsor-logo--large:hover {
-            transform: scale(1.22) translateY(-2px);
+            /* sem hover: evita efeito de “levantar” que parece sombra */
         }
         @keyframes sponsorScroll {
             from { transform: translateX(0); }
@@ -229,38 +224,46 @@
         </div>
     </section>
 
-    <section id="patrocinadores" class="py-20 bg-white border-b border-gray-100 overflow-hidden">
+    <section id="patrocinadores" class="py-24 bg-white overflow-hidden shadow-none">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 mb-10 text-center">
             <p class="text-brand-blue text-[11px] font-bold uppercase tracking-[0.3em] mb-3">Parceiros</p>
             <h2 class="font-display text-3xl md:text-4xl text-brand-black font-bold">Patrocinadores</h2>
         </div>
         <div class="relative">
-            <div class="sponsor-track flex items-center gap-10 px-6">
-                <img src="assets/patrocinadores/Logo_Beetools_01.png" alt="Patrocinador Beetools" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition">
-                <img src="assets/patrocinadores/isdin-logo-png_seeklogo-338247.png" alt="Patrocinador Isdin" class="sponsor-logo--large h-20 w-auto object-contain grayscale hover:grayscale-0 transition">
-                <img src="assets/patrocinadores/1%20Vertical-7.png" alt="Patrocinador 1 Vertical" class="sponsor-logo--large h-20 w-auto object-contain grayscale hover:grayscale-0 transition">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-17%20at%2009.59.39.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-17%20at%2011.18.02.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2009.02.00.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2009.24.23.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2010.49.05.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2013.02.47.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2014.50.51.jpeg" alt="Patrocinador" class="sponsor-logo--large h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2019.34.43.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-21%20at%2012.18.25.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
+            <div class="sponsor-track flex items-center gap-3 md:gap-4 px-2 md:px-4">
+                <img src="assets/patrocinadores/BT-logo-ADEMICON.png" alt="Logo ADEMICON" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-AGROJAX.png" alt="Logo AGROJAX" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Arena%20Batel.png" alt="Logo Arena Batel" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Barion.png" alt="Logo Barion" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Beleza%20Ecoville.png" alt="Logo Beleza Ecoville" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Beetools.png" alt="Logo Beetools" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Comunicore.png" alt="Logo Comunicore" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Helen%20Hayashida.png" alt="Logo Helen Hayashida" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-ISDIN.png" alt="Logo ISDIN" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-KIBON.png" alt="Logo KIBON" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Maria%20Farinha.png" alt="Logo Maria Farinha" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Principia.png" alt="Logo Principia" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Rede%20Salvaro.png" alt="Logo Rede Salvaro" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Vanessa%20Aoki.png" alt="Logo Vanessa Aoki" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-W.SIS.png" alt="Logo W.SIS" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-ZAPATA.png" alt="Logo ZAPATA" loading="lazy" decoding="async">
 
-                <img src="assets/patrocinadores/Logo_Beetools_01.png" alt="Patrocinador Beetools" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition">
-                <img src="assets/patrocinadores/isdin-logo-png_seeklogo-338247.png" alt="Patrocinador Isdin" class="sponsor-logo--large h-20 w-auto object-contain grayscale hover:grayscale-0 transition">
-                <img src="assets/patrocinadores/1%20Vertical-7.png" alt="Patrocinador 1 Vertical" class="sponsor-logo--large h-20 w-auto object-contain grayscale hover:grayscale-0 transition">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-17%20at%2009.59.39.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-17%20at%2011.18.02.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2009.02.00.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2009.24.23.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2010.49.05.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2013.02.47.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2014.50.51.jpeg" alt="Patrocinador" class="sponsor-logo--large h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-20%20at%2019.34.43.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
-                <img src="assets/patrocinadores/WhatsApp%20Image%202025-10-21%20at%2012.18.25.jpeg" alt="Patrocinador" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition rounded">
+                <img src="assets/patrocinadores/BT-logo-ADEMICON.png" alt="Logo ADEMICON" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-AGROJAX.png" alt="Logo AGROJAX" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Arena%20Batel.png" alt="Logo Arena Batel" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Barion.png" alt="Logo Barion" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Beleza%20Ecoville.png" alt="Logo Beleza Ecoville" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Beetools.png" alt="Logo Beetools" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Comunicore.png" alt="Logo Comunicore" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Helen%20Hayashida.png" alt="Logo Helen Hayashida" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-ISDIN.png" alt="Logo ISDIN" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-KIBON.png" alt="Logo KIBON" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Maria%20Farinha.png" alt="Logo Maria Farinha" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Principia.png" alt="Logo Principia" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Rede%20Salvaro.png" alt="Logo Rede Salvaro" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-Vanessa%20Aoki.png" alt="Logo Vanessa Aoki" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-W.SIS.png" alt="Logo W.SIS" loading="lazy" decoding="async">
+                <img src="assets/patrocinadores/BT-logo-ZAPATA.png" alt="Logo ZAPATA" loading="lazy" decoding="async">
             </div>
         </div>
     </section>
