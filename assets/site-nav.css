@@ -1,0 +1,81 @@
+/**
+ * Navegação global — menu principal com submenus (brief PDF site Clube de Mães Maristas)
+ */
+.site-nav-dropdown {
+  position: relative;
+}
+.site-nav-dropdown__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font: inherit;
+}
+.site-nav-dropdown__panel {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  padding-top: 0.5rem;
+  min-width: 13.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 60;
+}
+.site-nav-dropdown:hover .site-nav-dropdown__panel,
+.site-nav-dropdown:focus-within .site-nav-dropdown__panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.site-nav-dropdown__panel-inner {
+  background: #fff;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 40px rgba(44, 74, 107, 0.12);
+  padding: 0.35rem 0;
+}
+.site-nav-dropdown__panel a {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  color: #374151;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.site-nav-dropdown__panel a:hover {
+  background: #f1f5f9;
+  color: #2c4a6b;
+}
+
+/* Drawer mobile */
+#site-nav-drawer {
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+#site-nav-drawer.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+#site-nav-drawer:not(.is-open) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#site-nav-drawer-panel {
+  transform: translateX(100%);
+  transition: transform 0.28s ease;
+}
+#site-nav-drawer.is-open #site-nav-drawer-panel {
+  transform: translateX(0);
+}
+
+.site-nav-details summary {
+  list-style: none;
+}
+.site-nav-details summary::-webkit-details-marker {
+  display: none;
+}

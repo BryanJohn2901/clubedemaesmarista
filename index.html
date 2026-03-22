@@ -43,6 +43,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/site-nav.css">
     
     <style>
         /* Menu moderno */
@@ -93,6 +94,12 @@
             background: #fff !important;
             color: #2C4A6B !important;
         }
+        header.scrolled .site-nav-dropdown__btn {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+        header.scrolled .site-nav-dropdown__btn:hover {
+            color: #fff !important;
+        }
         #patrocinadores {
             box-shadow: none;
         }
@@ -127,108 +134,261 @@
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
+        /* Carrossel topo */
+        .hero-slide {
+            transition: opacity 1s ease-in-out;
+        }
+        .hero-slide.is-active {
+            opacity: 1 !important;
+            z-index: 5;
+            pointer-events: auto;
+        }
+        .hero-slide:not(.is-active) {
+            opacity: 0 !important;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .hero-dot.is-on { background: #fff; transform: scale(1.15); }
     </style>
 </head>
 <body class="font-sans antialiased text-brand-text bg-brand-surface selection:bg-brand-blue selection:text-white">
 
     <header id="main-header" class="fixed w-full z-40 transition-all duration-500 bg-white/90 backdrop-blur-md border-b border-gray-100/80 py-3">
-        <nav class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+        <nav class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center" aria-label="Principal">
             <a href="#inicio" class="flex items-center shrink-0">
                 <img src="assets/logo.png" alt="Clube de Mães Marista - Beach Tennis" class="h-12 lg:h-14 w-auto object-contain">
             </a>
             
-            <div class="hidden lg:flex items-center gap-1">
-                <a href="#inicio" class="nav-link text-[13px] font-medium text-brand-black/80 hover:text-brand-blue">Início</a>
-                <a href="quem-somos.html" class="nav-link text-[13px] font-medium text-brand-black/80 hover:text-brand-blue">Quem Somos</a>
-                <a href="beach-tennis.html" class="nav-link text-[13px] font-medium text-brand-black/80 hover:text-brand-blue">Beach Tennis</a>
-                <a href="noticias.html" class="nav-link text-[13px] font-medium text-brand-black/80 hover:text-brand-blue">Notícias</a>
-                <a href="eventos.html" class="nav-link text-[13px] font-medium text-brand-black/80 hover:text-brand-blue">Eventos</a>
-                <a href="midia-kit.html" class="nav-link text-[13px] font-medium text-brand-black/80 hover:text-brand-blue">Mídia Kit</a>
-                <a href="contato.html" class="nav-link text-[13px] font-medium text-brand-black/80 hover:text-brand-blue">Contato</a>
-                
-                <button onclick="openPopup()" class="btn-inscreva ml-4 bg-brand-blue text-white px-6 py-2.5 rounded-full text-[13px] font-semibold hover:bg-brand-black transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-brand-blue/25">
+            <!-- Menu desktop: estrutura do PDF com submenus -->
+            <div class="hidden lg:flex flex-wrap items-center justify-end gap-x-0.5 gap-y-1 max-w-5xl xl:max-w-none">
+                <a href="#inicio" class="nav-link text-[11px] xl:text-[13px] font-medium text-brand-black/80 hover:text-brand-blue">Início</a>
+
+                <div class="site-nav-dropdown">
+                    <button type="button" class="nav-link site-nav-dropdown__btn text-[11px] xl:text-[13px] font-medium text-brand-black/80 hover:text-brand-blue" aria-haspopup="true" aria-expanded="false">O Clube <i class="fa-solid fa-chevron-down text-[9px] opacity-70" aria-hidden="true"></i></button>
+                    <div class="site-nav-dropdown__panel" role="menu">
+                        <div class="site-nav-dropdown__panel-inner rounded-xl">
+                            <a href="quem-somos.html" role="menuitem">Quem somos</a>
+                            <a href="quem-somos.html#diretoria" role="menuitem">Diretoria</a>
+                            <a href="regulamento.html" role="menuitem">Regulamento</a>
+                            <a href="midia-kit.html" role="menuitem">Mídia Kit</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="quem-pode-participar.html" class="nav-link text-[11px] xl:text-[13px] font-medium text-brand-black/80 hover:text-brand-blue" title="Quem pode se inscrever">Participação</a>
+
+                <div class="site-nav-dropdown">
+                    <button type="button" class="nav-link site-nav-dropdown__btn text-[11px] xl:text-[13px] font-medium text-brand-black/80 hover:text-brand-blue" aria-haspopup="true">Beach Tennis <i class="fa-solid fa-chevron-down text-[9px] opacity-70" aria-hidden="true"></i></button>
+                    <div class="site-nav-dropdown__panel" role="menu">
+                        <div class="site-nav-dropdown__panel-inner rounded-xl">
+                            <a href="beach-tennis.html" role="menuitem">Visão geral</a>
+                            <a href="beach-tennis.html#estrutura" role="menuitem">Estrutura</a>
+                            <a href="beach-tennis.html#horarios" role="menuitem">Horários</a>
+                            <a href="beach-tennis.html#aulas" role="menuitem">Aulas de beach</a>
+                            <a href="beach-tennis.html#eventos" role="menuitem">Eventos nas quadras</a>
+                            <a href="beach-tennis.html#campeonatos" role="menuitem">Campeonatos</a>
+                            <a href="eventos.html" role="menuitem">Agenda do clube</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-nav-dropdown">
+                    <button type="button" class="nav-link site-nav-dropdown__btn text-[11px] xl:text-[13px] font-medium text-brand-black/80 hover:text-brand-blue" aria-haspopup="true">Notícias <i class="fa-solid fa-chevron-down text-[9px] opacity-70" aria-hidden="true"></i></button>
+                    <div class="site-nav-dropdown__panel" role="menu">
+                        <div class="site-nav-dropdown__panel-inner rounded-xl">
+                            <a href="noticias.html" role="menuitem">Todas as notícias</a>
+                            <a href="noticias.html#imprensa" role="menuitem">Imprensa</a>
+                            <a href="noticias.html#blog" role="menuitem">Blog</a>
+                            <a href="noticias.html#galeria" role="menuitem">Galeria de imagens</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-nav-dropdown">
+                    <button type="button" class="nav-link site-nav-dropdown__btn text-[11px] xl:text-[13px] font-medium text-brand-black/80 hover:text-brand-blue" aria-haspopup="true">Apoio <i class="fa-solid fa-chevron-down text-[9px] opacity-70" aria-hidden="true"></i></button>
+                    <div class="site-nav-dropdown__panel" role="menu">
+                        <div class="site-nav-dropdown__panel-inner rounded-xl">
+                            <a href="patrocinadores.html" role="menuitem">Patrocinadores</a>
+                            <a href="parceiros.html" role="menuitem">Parceiros</a>
+                            <a href="loja-virtual.html" role="menuitem">Loja virtual</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="contato.html" class="nav-link text-[11px] xl:text-[13px] font-medium text-brand-black/80 hover:text-brand-blue">Contato</a>
+                <button type="button" onclick="openPopup()" class="btn-inscreva ml-1 xl:ml-3 bg-brand-blue text-white px-4 xl:px-6 py-2.5 rounded-full text-[11px] xl:text-[13px] font-semibold hover:bg-brand-black transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-brand-blue/25">
                     Inscreva-se
                 </button>
             </div>
 
-            <button class="lg:hidden p-2 rounded-lg text-brand-black hover:bg-gray-100 transition-colors" aria-label="Menu">
-                <i class="fa-solid fa-bars text-xl"></i>
+            <button type="button" id="site-nav-toggle" class="lg:hidden p-2 rounded-lg text-brand-black hover:bg-gray-100 transition-colors" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-nav-drawer">
+                <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
             </button>
         </nav>
     </header>
 
-    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="assets/asset 4.jpeg" alt="" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-brand-black/50"></div>
-        </div>
-        <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center relative z-10">
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur border border-white/30 mb-6">
-                <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-                <span class="text-[11px] text-white uppercase tracking-[0.2em] font-semibold">Comunidade Exclusiva 2026</span>
-            </div>
-            
-            <h1 class="font-display text-5xl md:text-6xl lg:text-7xl text-white mb-6 leading-[1.1] tracking-tight font-bold drop-shadow-lg">
-                Esporte, Saúde <span class="italic text-brand-lightBlue font-normal">e Integração</span> para Mães Maristas
-            </h1>
-            
-            <p class="text-white/90 text-sm md:text-base font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-                Conecte-se com outras mães através do Beach Tennis. Uma curadoria de experiências, bem-estar e conexões valiosas fundamentadas nos valores Maristas.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button onclick="openPopup()" class="bg-brand-blue text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:bg-brand-black transition-all duration-300 flex items-center justify-center gap-3 group shadow-lg hover:shadow-brand-blue/20 transform hover:-translate-y-1 mx-auto sm:mx-0">
-                    Saiba Mais
-                    <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+    <!-- Menu mobile (submenus em acordeão) -->
+    <div id="site-nav-drawer" class="fixed inset-0 z-[70] lg:hidden bg-black/40" aria-hidden="true">
+        <div id="site-nav-drawer-panel" class="absolute right-0 top-0 bottom-0 w-[min(100%,20rem)] bg-white shadow-2xl overflow-y-auto p-6 pt-5 flex flex-col">
+            <div class="flex justify-between items-center mb-5">
+                <span class="font-display font-bold text-brand-blue text-lg">Menu</span>
+                <button type="button" id="site-nav-close" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600" aria-label="Fechar menu">
+                    <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
                 </button>
-                <a href="#atividades" class="bg-white/20 text-white border border-white/40 backdrop-blur px-10 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:bg-white/30 transition-colors flex items-center justify-center gap-3 mx-auto sm:mx-0">
-                    <i class="fa-solid fa-play text-[10px]"></i> Ver Atividades
-                </a>
             </div>
+            <nav class="flex flex-col gap-0.5 text-[13px]" aria-label="Menu mobile">
+                <a href="#inicio" class="py-2.5 px-2 rounded-lg hover:bg-slate-50 font-medium text-brand-text">Início</a>
+
+                <details class="site-nav-details border-b border-gray-100 py-1">
+                    <summary class="py-2 px-2 cursor-pointer font-medium text-brand-text flex justify-between items-center list-none">O Clube <i class="fa-solid fa-chevron-down text-xs opacity-60"></i></summary>
+                    <div class="pl-3 pb-3 pt-1 space-y-1 border-l-2 border-brand-lightBlue ml-2 text-gray-600">
+                        <a href="quem-somos.html" class="block py-1">Quem somos</a>
+                        <a href="quem-somos.html#diretoria" class="block py-1">Diretoria</a>
+                        <a href="regulamento.html" class="block py-1">Regulamento</a>
+                        <a href="midia-kit.html" class="block py-1">Mídia Kit</a>
+                    </div>
+                </details>
+
+                <a href="quem-pode-participar.html" class="py-2.5 px-2 rounded-lg hover:bg-slate-50 font-medium text-brand-text border-b border-gray-100">Participação</a>
+
+                <details class="site-nav-details border-b border-gray-100 py-1">
+                    <summary class="py-2 px-2 cursor-pointer font-medium text-brand-text flex justify-between items-center list-none">Beach Tennis <i class="fa-solid fa-chevron-down text-xs opacity-60"></i></summary>
+                    <div class="pl-3 pb-3 pt-1 space-y-1 border-l-2 border-brand-lightBlue ml-2 text-gray-600">
+                        <a href="beach-tennis.html" class="block py-1">Visão geral</a>
+                        <a href="beach-tennis.html#estrutura" class="block py-1">Estrutura</a>
+                        <a href="beach-tennis.html#horarios" class="block py-1">Horários</a>
+                        <a href="beach-tennis.html#aulas" class="block py-1">Aulas de beach</a>
+                        <a href="beach-tennis.html#eventos" class="block py-1">Eventos nas quadras</a>
+                        <a href="beach-tennis.html#campeonatos" class="block py-1">Campeonatos</a>
+                        <a href="eventos.html" class="block py-1">Agenda do clube</a>
+                    </div>
+                </details>
+
+                <details class="site-nav-details border-b border-gray-100 py-1">
+                    <summary class="py-2 px-2 cursor-pointer font-medium text-brand-text flex justify-between items-center list-none">Notícias <i class="fa-solid fa-chevron-down text-xs opacity-60"></i></summary>
+                    <div class="pl-3 pb-3 pt-1 space-y-1 border-l-2 border-brand-lightBlue ml-2 text-gray-600">
+                        <a href="noticias.html" class="block py-1">Todas as notícias</a>
+                        <a href="noticias.html#imprensa" class="block py-1">Imprensa</a>
+                        <a href="noticias.html#blog" class="block py-1">Blog</a>
+                        <a href="noticias.html#galeria" class="block py-1">Galeria de imagens</a>
+                    </div>
+                </details>
+
+                <details class="site-nav-details border-b border-gray-100 py-1">
+                    <summary class="py-2 px-2 cursor-pointer font-medium text-brand-text flex justify-between items-center list-none">Apoio <i class="fa-solid fa-chevron-down text-xs opacity-60"></i></summary>
+                    <div class="pl-3 pb-3 pt-1 space-y-1 border-l-2 border-brand-lightBlue ml-2 text-gray-600">
+                        <a href="patrocinadores.html" class="block py-1">Patrocinadores</a>
+                        <a href="parceiros.html" class="block py-1">Parceiros</a>
+                        <a href="loja-virtual.html" class="block py-1">Loja virtual</a>
+                    </div>
+                </details>
+
+                <a href="contato.html" class="py-2.5 px-2 rounded-lg hover:bg-slate-50 font-medium text-brand-text">Contato</a>
+                <button type="button" id="site-nav-inscreva" class="mt-4 w-full bg-brand-blue text-white px-4 py-3 rounded-full text-sm font-semibold hover:bg-brand-black transition">Inscreva-se</button>
+            </nav>
+        </div>
+    </div>
+
+    <section id="inicio" class="relative min-h-screen overflow-hidden">
+        <div id="hero-carousel" class="absolute inset-0 z-0" aria-roledescription="carousel">
+            <a href="patrocinadores.html" class="hero-slide is-active absolute inset-0 block" data-hero-slide="0">
+                <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1920&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-brand-black/55"></div>
+                <div class="relative z-[2] flex min-h-screen flex-col items-center justify-center px-6 pt-24 pb-28 text-center">
+                    <p class="text-[11px] uppercase tracking-[0.25em] text-white/80 mb-3">Destaque</p>
+                    <h2 class="font-display text-4xl md:text-6xl font-bold text-white max-w-3xl">Patrocinadores</h2>
+                    <p class="mt-4 text-white/90 max-w-xl text-sm md:text-base">Marcas que acreditam no Clube de Mães e na comunidade Marista.</p>
+                    <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-lightBlue">Ver marcas <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+            <a href="quem-pode-participar.html" class="hero-slide absolute inset-0 block" data-hero-slide="1">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1920&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-brand-blue/65"></div>
+                <div class="relative z-[2] flex min-h-screen flex-col items-center justify-center px-6 pt-24 pb-28 text-center">
+                    <p class="text-[11px] uppercase tracking-[0.25em] text-white/80 mb-3">Inscrições</p>
+                    <h2 class="font-display text-4xl md:text-6xl font-bold text-white max-w-3xl">Quem pode participar</h2>
+                    <p class="mt-4 text-white/90 max-w-xl text-sm md:text-base">Mães de alunos do Colégio Marista de Curitiba — saiba as regras.</p>
+                    <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white">Saiba mais <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+            <a href="beach-tennis.html#campeonatos" class="hero-slide absolute inset-0 block" data-hero-slide="2">
+                <img src="https://images.unsplash.com/photo-1622279457426-62bd4e431112?q=80&w=1920&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-brand-black/55"></div>
+                <div class="relative z-[2] flex min-h-screen flex-col items-center justify-center px-6 pt-24 pb-28 text-center">
+                    <p class="text-[11px] uppercase tracking-[0.25em] text-white/80 mb-3">Competição</p>
+                    <h2 class="font-display text-4xl md:text-6xl font-bold text-white max-w-3xl">Campeonatos</h2>
+                    <p class="mt-4 text-white/90 max-w-xl text-sm md:text-base">Torneios, datas e categorias — área atualizada com frequência.</p>
+                    <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-lightBlue">Ver campeonatos <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+            <a href="beach-tennis.html#aulas" class="hero-slide absolute inset-0 block" data-hero-slide="3">
+                <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?q=80&w=1920&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-brand-black/50"></div>
+                <div class="relative z-[2] flex min-h-screen flex-col items-center justify-center px-6 pt-24 pb-28 text-center">
+                    <p class="text-[11px] uppercase tracking-[0.25em] text-white/80 mb-3">Aprendizado</p>
+                    <h2 class="font-display text-4xl md:text-6xl font-bold text-white max-w-3xl">Aulas de Beach Tennis</h2>
+                    <p class="mt-4 text-white/90 max-w-xl text-sm md:text-base">Horários, professores e agendamento.</p>
+                    <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-lightBlue">Ver aulas <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+            <a href="eventos.html" class="hero-slide absolute inset-0 block" data-hero-slide="4">
+                <img src="assets/asset 4.jpeg" alt="" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-brand-black/50"></div>
+                <div class="relative z-[2] flex min-h-screen flex-col items-center justify-center px-6 pt-24 pb-28 text-center">
+                    <p class="text-[11px] uppercase tracking-[0.25em] text-white/80 mb-3">Agenda</p>
+                    <h2 class="font-display text-4xl md:text-6xl font-bold text-white max-w-3xl">Eventos do Clube</h2>
+                    <p class="mt-4 text-white/90 max-w-xl text-sm md:text-base">Encontros, celebrações e atividades — calendário atualizado.</p>
+                    <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-lightBlue">Ver agenda <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
+        <div class="absolute bottom-8 left-0 right-0 z-20 flex flex-col items-center gap-4 pointer-events-none">
+            <div id="hero-dots" class="flex gap-2 pointer-events-auto" role="tablist" aria-label="Slides do banner"></div>
+            <p class="text-[10px] text-white/60 uppercase tracking-widest pointer-events-none">Clique no banner ou nos pontos • troca automática</p>
         </div>
     </section>
 
     <section id="quem-somos" class="py-32 bg-slate-50 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                
-                <div class="lg:col-span-6 relative order-2 lg:order-1">
-                    <div class="aspect-[4/5] overflow-hidden rounded-2xl shadow-xl relative z-10">
-                        <img src="assets/asset 2.jpeg" alt="Socialização no Clube" class="w-full h-full object-cover">
-                    </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                <div class="grid grid-cols-2 gap-3 order-2 lg:order-1">
+                    <img src="assets/quemSomos/Presidente-Priscila.png" alt="Presidente Priscila" class="rounded-2xl shadow-lg w-full h-56 object-cover object-top">
+                    <img src="assets/quemSomos/Diretora de Marketing-Ceres Battistelli.png" alt="Diretora de Marketing Ceres Battistelli" class="rounded-2xl shadow-lg w-full h-56 object-cover object-top">
+                    <img src="assets/quemSomos/Diretora Jurídica.png" alt="Diretora Jurídica" class="rounded-2xl shadow-lg w-full col-span-2 h-64 object-cover object-top">
                 </div>
-                
-                <div class="lg:col-span-6 lg:pl-12 order-1 lg:order-2">
-                    <p class="text-brand-blue text-[11px] font-bold uppercase tracking-[0.3em] mb-4">Nossa Essência</p>
-                    <h2 class="font-display text-4xl md:text-5xl text-brand-black mb-8 leading-tight font-bold">
-                        Mais que um esporte, <span class="text-brand-blue italic font-normal">uma família.</span>
-                    </h2>
-                    
-                    <div class="space-y-6 text-gray-700 font-light text-sm md:text-base leading-relaxed mb-12">
-                        <p>Fundado em 2025, o Clube de Mães do Colégio Marista Paranaense tem como missão promover o incentivo ao esporte, à saúde e a socialização das mães de alunos.</p>
-                        <p>Acreditamos que criar um espaço propício ao desenvolvimento social e esportivo reflete nos valores do Grupo Marista e na educação contínua dos alunos e seus familiares.</p>
+                <div class="order-1 lg:order-2 lg:pl-4">
+                    <h2 class="font-display text-3xl md:text-4xl text-brand-blue font-bold mb-5">Sobre o Clube</h2>
+                    <div class="space-y-5 text-gray-700 leading-relaxed text-sm md:text-base">
+                        <p>Fundado em 2025, o Clube de Mães do Colégio Marista Paranaense tem como missão promover o incentivo ao esporte, à saúde e a socialização e integração das mães de alunos por meio da prática do beach tênis.</p>
+                        <p>O Clube de Mães do Beach Tennis Marista é formado por mães de alunos do Colégio Marista de Curitiba, que tem como objetivo crescimento constante com adesão contínua de novas mães.</p>
+                        <p>O Colégio Marista possui mais de 3.000 alunos, impactando diretamente um público de mais de 6.000 pais, mães e familiares.</p>
                     </div>
+                    <a href="regulamento.html" class="inline-flex items-center gap-2 mt-8 text-brand-blue font-semibold text-sm border-b-2 border-brand-blue pb-1 hover:text-brand-black hover:border-brand-black transition">
+                        <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Leia o regulamento interno
+                    </a>
+                </div>
+            </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-10 border-t border-gray-200">
-                        <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow-sm border border-gray-100">
-                            <div class="w-12 h-12 rounded-full bg-brand-lightBlue flex items-center justify-center text-brand-blue shrink-0">
-                                <i class="fa-solid fa-users text-lg"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-brand-black text-sm font-semibold mb-1">Integração</h3>
-                                <p class="text-xs text-gray-500 font-light">União genuína entre mães e famílias Maristas.</p>
-                            </div>
+            <div class="mt-14 lg:mt-20 pt-12 border-t border-gray-200/80">
+                <div class="grid gap-6 md:grid-cols-2">
+                    <article class="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 h-full">
+                        <i class="fa-solid fa-bullseye text-brand-blue mb-4 text-xl" aria-hidden="true"></i>
+                        <h3 class="font-display text-xl md:text-2xl mb-3 text-brand-blue">Missão</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">Temos como missão principal o esporte, a integração social, a organização e o fortalecimento da marca Marista Paranaense.</p>
+                    </article>
+                    <article class="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 h-full">
+                        <i class="fa-solid fa-eye text-brand-blue mb-4 text-xl" aria-hidden="true"></i>
+                        <h3 class="font-display text-xl md:text-2xl mb-3 text-brand-blue">Visão</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">Acreditamos que criar um espaço propício ao desenvolvimento social e esportivo também reflete nos valores do Grupo Marista e na educação contínua dos alunos e seus familiares. O Clube de Mães tem como propósito unir, difundir e multiplicar projetos e ações que beneficiem as mães Maristas como um todo.</p>
+                    </article>
+                    <article class="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 md:col-span-2">
+                        <i class="fa-solid fa-heart text-brand-blue mb-4 text-xl" aria-hidden="true"></i>
+                        <h3 class="font-display text-xl md:text-2xl mb-3 text-brand-blue">Valores</h3>
+                        <div class="text-gray-600 leading-relaxed text-sm md:text-base space-y-4 max-w-5xl">
+                            <p>Nos Colégios Maristas, a educação de excelência anda lado a lado com valores solidários. Unidos pela mesma missão, o desenvolvimento do estudante acontece de forma integral desde cedo, contemplando aspectos emocionais, intelectuais, espirituais e sociais.</p>
+                            <p>Isso está presente no nosso cotidiano com experiências e vivências significativas que vão muito além das quadras de beach tênis. Por aqui, o que não faltam são oportunidades para criar laços significativos, exercitar o espírito de equipe, o autocuidado, a saúde física e mental, conectadas com o propósito Marista.</p>
                         </div>
-                        <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow-sm border border-gray-100">
-                            <div class="w-12 h-12 rounded-full bg-brand-lightBlue flex items-center justify-center text-brand-blue shrink-0">
-                                <i class="fa-solid fa-heart-pulse text-lg"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-brand-black text-sm font-semibold mb-1">Vitalidade</h3>
-                                <p class="text-xs text-gray-500 font-light">Foco na saúde física e mental em equilíbrio.</p>
-                            </div>
-                        </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </div>
@@ -395,23 +555,41 @@
                     <p class="text-white/80 text-sm leading-relaxed max-w-sm mb-8">
                         A união perfeita entre a elegância do esporte, o compromisso com a saúde e os valores do Colégio Marista Paranaense.
                     </p>
-                    <div class="flex gap-3">
-                        <a href="#" class="w-11 h-11 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-105" aria-label="Instagram"><i class="fa-brands fa-instagram text-lg"></i></a>
-                        <a href="#" class="w-11 h-11 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-105" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://www.instagram.com/cbtmaesmarista/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-105" aria-label="Instagram"><i class="fa-brands fa-instagram text-lg"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-105" aria-label="Facebook"><i class="fa-brands fa-facebook text-lg"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-105" aria-label="TikTok"><i class="fa-brands fa-tiktok text-lg"></i></a>
+                        <a href="https://wa.me/5541999999999" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-105" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp text-lg"></i></a>
                     </div>
                 </div>
                 
                 <div class="lg:col-span-3 lg:col-start-7">
                     <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/60 mb-6">Navegação</h4>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="#inicio" class="text-white/90 hover:text-white transition-colors">Início</a></li>
-                        <li><a href="quem-somos.html" class="text-white/90 hover:text-white transition-colors">Quem Somos</a></li>
-                        <li><a href="beach-tennis.html" class="text-white/90 hover:text-white transition-colors">Beach Tennis</a></li>
-                        <li><a href="noticias.html" class="text-white/90 hover:text-white transition-colors">Notícias</a></li>
-                        <li><a href="eventos.html" class="text-white/90 hover:text-white transition-colors">Eventos</a></li>
-                        <li><a href="midia-kit.html" class="text-white/90 hover:text-white transition-colors">Mídia Kit</a></li>
-                        <li><a href="contato.html" class="text-white/90 hover:text-white transition-colors">Contato</a></li>
-                    </ul>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
+                        <div>
+                            <p class="text-[10px] uppercase tracking-wider text-white/45 mb-2">O Clube</p>
+                            <ul class="space-y-2">
+                                <li><a href="quem-somos.html" class="text-white/90 hover:text-white transition-colors">Quem somos</a></li>
+                                <li><a href="quem-somos.html#diretoria" class="text-white/90 hover:text-white transition-colors">Diretoria</a></li>
+                                <li><a href="regulamento.html" class="text-white/90 hover:text-white transition-colors">Regulamento</a></li>
+                                <li><a href="midia-kit.html" class="text-white/90 hover:text-white transition-colors">Mídia Kit</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-wider text-white/45 mb-2">Site</p>
+                            <ul class="space-y-2">
+                                <li><a href="#inicio" class="text-white/90 hover:text-white transition-colors">Início</a></li>
+                                <li><a href="quem-pode-participar.html" class="text-white/90 hover:text-white transition-colors">Participação</a></li>
+                                <li><a href="beach-tennis.html" class="text-white/90 hover:text-white transition-colors">Beach Tennis</a></li>
+                                <li><a href="noticias.html" class="text-white/90 hover:text-white transition-colors">Notícias</a></li>
+                                <li><a href="eventos.html" class="text-white/90 hover:text-white transition-colors">Agenda</a></li>
+                                <li><a href="patrocinadores.html" class="text-white/90 hover:text-white transition-colors">Patrocinadores</a></li>
+                                <li><a href="parceiros.html" class="text-white/90 hover:text-white transition-colors">Parceiros</a></li>
+                                <li><a href="loja-virtual.html" class="text-white/90 hover:text-white transition-colors">Loja</a></li>
+                                <li><a href="contato.html" class="text-white/90 hover:text-white transition-colors">Contato</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="lg:col-span-4">
@@ -481,7 +659,22 @@
         </div>
     </div>
 
+    <script src="assets/site-nav.js" defer></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var b = document.getElementById('site-nav-inscreva');
+            if (b) b.addEventListener('click', function () {
+                var d = document.getElementById('site-nav-drawer');
+                if (d && d.classList.contains('is-open')) {
+                    d.classList.remove('is-open');
+                    d.setAttribute('aria-hidden', 'true');
+                    var t = document.getElementById('site-nav-toggle');
+                    if (t) t.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+                if (typeof openPopup === 'function') openPopup();
+            });
+        });
         // --- 0. Menu fixo: muda para azul ao scrollar ---
         (function() {
             var header = document.getElementById('main-header');
@@ -495,6 +688,46 @@
             }
             window.addEventListener('scroll', updateHeader, { passive: true });
             updateHeader(); // estado inicial
+        })();
+
+        // --- 0b. Carrossel de banners (topo) ---
+        (function () {
+            var slides = document.querySelectorAll('#hero-carousel [data-hero-slide]');
+            var dotsWrap = document.getElementById('hero-dots');
+            if (!slides.length || !dotsWrap) return;
+            var idx = 0;
+            var timer;
+            function go(n) {
+                idx = n;
+                slides.forEach(function (s, i) {
+                    s.classList.toggle('is-active', i === idx);
+                });
+                var dots = dotsWrap.querySelectorAll('.hero-dot');
+                dots.forEach(function (d, i) {
+                    d.classList.toggle('is-on', i === idx);
+                });
+            }
+            function next() {
+                go((idx + 1) % slides.length);
+            }
+            function resetTimer() {
+                clearInterval(timer);
+                timer = setInterval(next, 6500);
+            }
+            slides.forEach(function (_, i) {
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.className = 'hero-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/80 transition';
+                if (i === 0) b.classList.add('is-on');
+                b.setAttribute('aria-label', 'Banner ' + (i + 1));
+                b.addEventListener('click', function () {
+                    go(i);
+                    resetTimer();
+                });
+                dotsWrap.appendChild(b);
+            });
+            timer = setInterval(next, 6500);
+            go(0);
         })();
 
         // --- 1. Lógica do Popup ---

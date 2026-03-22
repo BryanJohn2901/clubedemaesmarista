@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato | Clube de Mães Marista</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="assets/site-nav.css"><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <script>tailwind.config={theme:{extend:{colors:{brand:{blue:"#2C4A6B"}}}}};</script>
-</head>
-<body class="font-['Plus_Jakarta_Sans'] text-gray-800 bg-[#F5F5F7]">
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
+#!/usr/bin/env python3
+"""Aplica o menu com submenus (PDF) em todas as páginas HTML exceto index."""
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+HEADER_INNER = r'''    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
         <nav class="max-w-7xl mx-auto px-6 lg:px-12 py-3 flex flex-wrap items-center justify-between gap-2" aria-label="Principal">
             <a href="index.html"><img src="assets/logo.png" alt="Logo Clube de Mães Marista" class="h-12"></a>
             <div class="hidden lg:flex flex-wrap items-center justify-end gap-x-0.5 gap-y-1 text-[12px] max-w-5xl xl:max-w-none">
@@ -126,32 +120,47 @@
             </nav>
         </div>
     </div>
-    <section class="relative py-24 text-white"><img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=1800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover" alt=""><div class="absolute inset-0 bg-brand-blue/80"></div><div class="relative max-w-7xl mx-auto px-6 lg:px-12 text-center" data-aos="fade-up"><p class="uppercase text-xs tracking-[0.2em] mb-2">Fale Conosco</p><h1 class="font-['Outfit'] text-4xl md:text-6xl font-bold">Contato</h1><p class="text-white/90 mt-3">Dúvidas, sugestões ou parcerias? Entre em contato com nossa equipe.</p></div></section>
-    <main class="max-w-7xl mx-auto px-6 lg:px-12 py-14 lg:py-20">
-        <div class="grid lg:grid-cols-2 gap-8">
-            <section class="bg-white rounded-2xl border border-gray-100 p-8" data-aos="fade-right">
-                <h2 class="font-['Outfit'] text-4xl text-brand-blue font-bold mb-6">Informações de Contato</h2>
-                <p class="text-gray-600 mb-7">Estamos à disposição para atender você. Utilize um dos canais abaixo ou preencha o formulário para nos enviar uma mensagem.</p>
-                <div class="space-y-6 text-gray-700">
-                    <div><p class="font-semibold text-brand-blue"><i class="fa-solid fa-location-dot mr-2"></i>Localização</p><p class="text-sm mt-1">Rua Bispo Dom José, 2674 - Seminário, Curitiba - PR</p></div>
-                    <div><p class="font-semibold text-brand-blue"><i class="fa-solid fa-phone mr-2"></i>Telefone / WhatsApp</p><p class="text-sm mt-1">(41) 99999-9999<br>Seg a Sex 09h às 18h</p></div>
-                    <div><p class="font-semibold text-brand-blue"><i class="fa-solid fa-envelope mr-2"></i>E-mails</p><p class="text-sm mt-1">contato@maesmarista.com.br<br>diretoria@maesmarista.com.br</p></div>
-                </div>
-            </section>
-            <section class="bg-white rounded-2xl border border-gray-100 p-8" data-aos="fade-left">
-                <h2 class="font-['Outfit'] text-4xl text-brand-blue font-bold mb-6">Envie uma Mensagem</h2>
-                <form class="space-y-4">
-                    <div class="grid sm:grid-cols-2 gap-4"><input class="border border-gray-200 rounded-lg px-4 py-3 text-sm" placeholder="Nome Completo"><input class="border border-gray-200 rounded-lg px-4 py-3 text-sm" placeholder="Telefone"></div>
-                    <input type="email" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm" placeholder="E-mail">
-                    <input class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm" placeholder="Assunto">
-                    <textarea rows="5" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm" placeholder="Mensagem"></textarea>
-                    <button type="button" class="w-full bg-brand-blue text-white py-3 rounded-xl font-semibold">Enviar Mensagem</button>
-                </form>
-            </section>
-        </div>
-    </main>
-    <footer class="bg-brand-blue text-white"><div class="max-w-7xl mx-auto px-6 lg:px-12 py-14"><p class="text-white/90 max-w-xl mb-6">Promovendo esporte, saúde e integração social para mães maristas através da prática do Beach Tennis.</p><div class="flex flex-wrap gap-4 mb-10"><a href="https://www.instagram.com/cbtmaesmarista/" target="_blank" rel="noopener noreferrer" class="text-2xl" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="text-2xl" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a><a href="#" class="text-2xl" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a></div><div class="grid md:grid-cols-3 gap-8 text-sm"><div><h4 class="font-semibold mb-3">Menu Rápido</h4><p class="text-white/80 leading-7">Início, Quem Somos, Participação, Beach Tennis, Notícias, Eventos, Loja, Patrocinadores, Parceiros, Regulamento, Mídia Kit, Contato.</p></div><div><h4 class="font-semibold mb-3">Contato</h4><p class="text-white/80">Colégio Marista Paranaense - Curitiba, PR<br>(41) 99999-9999<br>contato@maesmarista.com.br</p></div><div class="md:text-right"><p class="text-white/70">© 2026 Clube de Mães Beach Tennis Marista. Todos os direitos reservados.</p><p class="text-white/70 mt-2">Desenvolvido com ❤ para o esporte.</p></div></div></div></footer>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script>AOS.init({duration:700,once:true});</script>
-    <script src="assets/site-nav.js" defer></script>
-</body>
-</html>
+'''
+
+CSS_LINK = '<link rel="stylesheet" href="assets/site-nav.css">'
+SCRIPT_TAG = '<script src="assets/site-nav.js" defer></script>'
+
+
+def main():
+    for path in sorted(ROOT.glob("*.html")):
+        if path.name == "index.html":
+            continue
+        text = path.read_text(encoding="utf-8")
+        if "site-nav.css" not in text:
+            # insert after font-awesome link
+            m = re.search(
+                r'(<link[^>]*font-awesome[^>]*>)',
+                text,
+                re.IGNORECASE,
+            )
+            if m:
+                text = text[: m.end()] + "\n    " + CSS_LINK + text[m.end() :]
+            else:
+                text = text.replace("</head>", f"    {CSS_LINK}\n</head>", 1)
+
+        new_block, n = re.subn(
+            r"<header\b[^>]*>.*?</header>",
+            HEADER_INNER.strip(),
+            text,
+            count=1,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+        if n == 0:
+            print(f"SKIP (no header): {path.name}")
+            continue
+        text = new_block
+
+        if SCRIPT_TAG not in text:
+            text = text.replace("</body>", f"    {SCRIPT_TAG}\n</body>", 1)
+
+        path.write_text(text, encoding="utf-8")
+        print(f"OK: {path.name}")
+
+
+if __name__ == "__main__":
+    main()
